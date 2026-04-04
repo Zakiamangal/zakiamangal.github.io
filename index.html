@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zakia Imran Mangal — Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --accent: #06b6d4;
+            --bg: #0f172a;
+            --bg-card: #1e293b;
+            --bg-card-hover: #334155;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --gradient-1: linear-gradient(135deg, #6366f1, #06b6d4);
+            --gradient-2: linear-gradient(135deg, #6366f1, #a855f7);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 24px;
+        }
+
+        .hero-inner {
+            max-width: 720px;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid transparent;
+            background: linear-gradient(var(--bg), var(--bg)) padding-box,
+                        var(--gradient-1) border-box;
+            margin-bottom: 28px;
+            box-shadow: 0 0 60px rgba(99, 102, 241, 0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+        }
+
+        .hero .tagline {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            margin-bottom: 24px;
+        }
+
+        .hero .bio {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 560px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            color: var(--text);
+            background: var(--bg-card);
+        }
+
+        .social-links a:hover {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);
+        }
+
+        .social-links svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* SECTION */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 12px;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            font-size: 1.05rem;
+        }
+
+        /* STATS */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(99, 102, 241, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 4px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* PROJECT CARDS */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(99, 102, 241, 0.15);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .project-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .project-badge {
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+
+        .badge-flagship { background: rgba(99, 102, 241, 0.15); color: #818cf8; }
+        .badge-ecosystem { background: rgba(6, 182, 212, 0.15); color: #22d3ee; }
+        .badge-client { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
+        .badge-social { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
+
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            margin-bottom: 16px;
+            line-height: 1.65;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+
+        .tech-tag {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(99, 102, 241, 0.08);
+            color: var(--accent);
+            font-weight: 500;
+            border: 1px solid rgba(6, 182, 212, 0.15);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .project-links a {
+            font-size: 0.82rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s;
+        }
+
+        .project-links a:hover {
+            color: var(--accent);
+        }
+
+        .project-links a::after {
+            content: '→';
+            transition: transform 0.2s;
+        }
+
+        .project-links a:hover::after {
+            transform: translateX(3px);
+        }
+
+        /* SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-group {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .skill-group h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--accent);
+            margin-bottom: 14px;
+            font-weight: 600;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-item {
+            padding: 6px 14px;
+            background: rgba(99, 102, 241, 0.08);
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            border-radius: 8px;
+            font-size: 0.82rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* TIMELINE */
+        .timeline {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-1);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 36px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 6px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid var(--bg);
+            box-shadow: 0 0 0 3px var(--primary);
+        }
+
+        .timeline-year {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 4px;
+        }
+
+        .timeline-item h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .timeline-item p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* SCROLL ANIMATIONS */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 2rem; }
+            .hero .tagline { font-size: 1rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="hero-inner">
+            <img src="github-avatar.jpg" alt="Zakia Imran Mangal" class="avatar">
+            <h1>Zakia Imran Mangal</h1>
+            <p class="tagline">Blockchain &amp; Web3 Developer &bull; Full Stack Engineer</p>
+            <p class="bio">
+                Building decentralized trust infrastructure at <strong style="color:#818cf8">LinkedTrust</strong> since 2022.
+                Passionate about creating systems where trust is verifiable, credentials are portable,
+                and technology serves people — from ethical investing to civic engagement.
+            </p>
+            <div class="social-links">
+                <a href="https://github.com/Zakiamangal" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <a href="https://github.com/Whats-Cookin" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    Whats-Cookin
+                </a>
+                <a href="https://github.com/Cooperation-org" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    Cooperation-org
+                </a>
+                <a href="https://twitter.com/imran_zakia34348" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    Twitter
+                </a>
+                <a href="https://linkedtrust.us" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    LinkedTrust
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- STATS -->
+    <section>
+        <div class="container">
+            <div class="stats fade-in">
+                <div class="stat-card">
+                    <div class="stat-number">4+</div>
+                    <div class="stat-label">Years Building</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Projects Shipped</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">GitHub Orgs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Web3</div>
+                    <div class="stat-label">Blockchain &bull; Trust</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FLAGSHIP PROJECTS -->
+    <section>
+        <div class="container">
+            <h2 class="section-title fade-in">Projects</h2>
+            <p class="section-subtitle fade-in">Building decentralized trust — from core infrastructure to real-world applications</p>
+
+            <div class="projects-grid">
+
+                <!-- LinkedTrust -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>LinkedTrust Platform</h3>
+                        <span class="project-badge badge-flagship">Flagship</span>
+                    </div>
+                    <p>Decentralized trust platform enabling creation, validation, and connection of cryptographically signed claims. Build transparent webs of trust across people, organizations, and content.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Prisma</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://live.linkedtrust.us" target="_blank">Live Demo</a>
+                        <a href="https://github.com/Whats-Cookin/trust_claim" target="_blank">Frontend</a>
+                        <a href="https://github.com/Whats-Cookin/trust_claim_backend" target="_blank">Backend</a>
+                    </div>
+                </div>
+
+                <!-- LinkedClaims SDK -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>LinkedClaims SDK</h3>
+                        <span class="project-badge badge-flagship">Core</span>
+                    </div>
+                    <p>Core TypeScript SDK for creating, validating, and managing LinkedClaims. The foundation that powers the entire ecosystem — published on npm as @cooperation/linked-claims.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">npm</span>
+                        <span class="tech-tag">W3C VC</span>
+                        <span class="tech-tag">Crypto</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Cooperation-org/LinkedClaims" target="_blank">GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Alonovo -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Alonovo</h3>
+                        <span class="project-badge badge-ecosystem">Ethical Capital</span>
+                    </div>
+                    <p>Ethical capital allocation platform grading companies on democratic accountability, worker equity, and environmental responsibility — surfacing simple A-F letter grades at the point of purchase or investment.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">ESG Data</span>
+                        <span class="tech-tag">APIs</span>
+                        <span class="tech-tag">Analytics</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Cooperation-org/alonovo" target="_blank">GitHub</a>
+                    </div>
+                </div>
+
+                <!-- GoodDollar -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>GoodDollar / GoodBuilders</h3>
+                        <span class="project-badge badge-social">Social Impact</span>
+                    </div>
+                    <p>GoodBuilders Round 2 — building apps on the GoodDollar/GoodCollective platform. Includes Pesia's Kitchen (community food) and Global Classrooms (education access).</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">Web3</span>
+                        <span class="tech-tag">GoodCollective</span>
+                        <span class="tech-tag">Blockchain</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Cooperation-org/pesias-kitchen-app" target="_blank">Pesia's Kitchen</a>
+                        <a href="https://github.com/Cooperation-org/global-classrooms-app" target="_blank">Global Classrooms</a>
+                    </div>
+                </div>
+
+                <!-- Certify -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Certify</h3>
+                        <span class="project-badge badge-ecosystem">Credentials</span>
+                    </div>
+                    <p>Volunteer recognition badge platform for corporate HR. Issue verifiable OpenBadges v3 badges, track volunteer hours, and generate CSR reports.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Next.js 14</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">MUI</span>
+                        <span class="tech-tag">OpenBadges v3</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://certify-platform.vercel.app" target="_blank">Live Demo</a>
+                        <a href="https://github.com/Cooperation-org/certify" target="_blank">GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Talent -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Talent / LinkedCreds</h3>
+                        <span class="project-badge badge-ecosystem">Verification</span>
+                    </div>
+                    <p>Professional credential verification for recruiters and candidates. Build verifiable trust profiles, verify credentials with QR codes, and connect to LinkedIn.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">OAuth</span>
+                        <span class="tech-tag">QR Codes</span>
+                        <span class="tech-tag">LinkedClaims</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Cooperation-org/LinkedCreds" target="_blank">GitHub</a>
+                    </div>
+                </div>
+
+                <!-- SkillsAware -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>SkillsAware</h3>
+                        <span class="project-badge badge-client">Client</span>
+                    </div>
+                    <p>Stateless, serverless endorsement workflow platform. Create skill claims, validate through endorsers, and generate Open Badges v3.0 credentials — W3C Verifiable Credentials v2.0 compliant.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Next.js 15</span>
+                        <span class="tech-tag">Edge Runtime</span>
+                        <span class="tech-tag">W3C VC 2.0</span>
+                        <span class="tech-tag">JWT</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://skillsaware-endorsement.vercel.app" target="_blank">Live Demo</a>
+                        <a href="https://github.com/Cooperation-org/skillsaware-endorsement" target="_blank">GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Claims Extractor -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Linked Claims Extractor</h3>
+                        <span class="project-badge badge-ecosystem">AI</span>
+                    </div>
+                    <p>AI-powered claim extraction from PDFs and text using Claude/OpenAI. Automatically identifies claims and publishes them to LinkedTrust. Published on PyPI.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">Claude AI</span>
+                        <span class="tech-tag">NLP</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Whats-Cookin/trust-claim-data-pipeline" target="_blank">GitHub</a>
+                    </div>
+                </div>
+
+                <!-- CivicSky -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>CivicSky</h3>
+                        <span class="project-badge badge-social">Civic</span>
+                    </div>
+                    <p>Civic engagement bridge connecting Ghost CMS publishers to Bluesky social network — embedding actionable civic opportunities directly into content.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Ghost CMS</span>
+                        <span class="tech-tag">AT Protocol</span>
+                        <span class="tech-tag">Bluesky</span>
+                        <span class="tech-tag">React</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Cooperation-org/koenig-civic-action-card" target="_blank">GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Data Pipeline -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Trust Claim Data Pipeline</h3>
+                        <span class="project-badge badge-flagship">Infrastructure</span>
+                    </div>
+                    <p>Python-based data ingestion pipeline for processing, validating, and importing trust claims at scale into the LinkedTrust platform.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">ETL</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Nodes/Edges</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Whats-Cookin/trust-claim-data-pipeline" target="_blank">GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Streetwell -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Streetwell</h3>
+                        <span class="project-badge badge-client">Co-op Tech</span>
+                    </div>
+                    <p>Suite of tools for construction cooperatives in America. Multi-stakeholder equity structures, portfolio management, and worker-owned governance tools.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Full Stack</span>
+                        <span class="tech-tag">CDFI</span>
+                        <span class="tech-tag">Equity Models</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Cooperation-org/streetwell-phase-one" target="_blank">GitHub</a>
+                    </div>
+                </div>
+
+                <!-- AZ Sunshine -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>AZ Sunshine</h3>
+                        <span class="project-badge badge-social">Transparency</span>
+                    </div>
+                    <p>Arizona government transparency project — bringing sunshine to public records and civic data through open technology.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Open Data</span>
+                        <span class="tech-tag">Civic Tech</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Cooperation-org/Az-Sunshine" target="_blank">GitHub</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section>
+        <div class="container">
+            <h2 class="section-title fade-in">Technical Skills</h2>
+            <p class="section-subtitle fade-in">Technologies I work with every day</p>
+            <div class="skills-grid fade-in">
+                <div class="skill-group">
+                    <h4>Frontend</h4>
+                    <div class="skill-list">
+                        <span class="skill-item">React</span>
+                        <span class="skill-item">Next.js</span>
+                        <span class="skill-item">TypeScript</span>
+                        <span class="skill-item">Vite</span>
+                        <span class="skill-item">Material-UI</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4>Backend</h4>
+                    <div class="skill-list">
+                        <span class="skill-item">Node.js</span>
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">Flask</span>
+                        <span class="skill-item">Prisma</span>
+                        <span class="skill-item">PostgreSQL</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4>Web3 & Blockchain</h4>
+                    <div class="skill-list">
+                        <span class="skill-item">Verifiable Credentials</span>
+                        <span class="skill-item">W3C Standards</span>
+                        <span class="skill-item">Cryptography</span>
+                        <span class="skill-item">DID</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4>Tools & DevOps</h4>
+                    <div class="skill-list">
+                        <span class="skill-item">Git/GitHub</span>
+                        <span class="skill-item">Vercel</span>
+                        <span class="skill-item">Linux</span>
+                        <span class="skill-item">AI/Claude</span>
+                        <span class="skill-item">Docker</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JOURNEY -->
+    <section>
+        <div class="container">
+            <h2 class="section-title fade-in">Journey</h2>
+            <p class="section-subtitle fade-in">From Paktia, Afghanistan to building global trust infrastructure</p>
+            <div class="timeline fade-in">
+                <div class="timeline-item">
+                    <div class="timeline-year">2022</div>
+                    <h4>Joined LinkedTrust / What's Cookin'</h4>
+                    <p>Started contributing to the decentralized trust ecosystem, working on the core platform and frontend.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2023</div>
+                    <h4>Expanded Across the Ecosystem</h4>
+                    <p>Took on more projects — GoodDollar apps, data pipelines, and backend services.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2024</div>
+                    <h4>Full Stack & Blockchain</h4>
+                    <p>Working across Alonovo, Certify, Talent, and multiple credential verification platforms.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2025 — Present</div>
+                    <h4>Leading Development</h4>
+                    <p>SkillsAware client delivery, CivicSky civic tech, Streetwell cooperative tools, and growing the LinkedTrust ecosystem.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p style="margin-bottom: 8px;">Let's build something meaningful together.</p>
+            <p>
+                <a href="mailto:zakiaimran513@gmail.com">zakiaimran513@gmail.com</a> &bull;
+                <a href="https://github.com/Zakiamangal" target="_blank">GitHub</a> &bull;
+                <a href="https://linkedtrust.us" target="_blank">LinkedTrust</a>
+            </p>
+            <p style="margin-top: 16px; opacity: 0.5;">&copy; 2026 Zakia Imran Mangal</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
