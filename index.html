@@ -1337,6 +1337,7 @@
         function openCvModal() {
             document.getElementById('cvModal').classList.add('active');
             document.body.style.overflow = 'hidden';
+            window.scrollTo(0, 0);
         }
         function closeCvModal() {
             document.getElementById('cvModal').classList.remove('active');
@@ -1344,6 +1345,11 @@
         }
         document.getElementById('cvModal').addEventListener('click', function(e) {
             if (e.target === this) closeCvModal();
+        });
+
+        // ESC key to close modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeCvModal();
         });
     </script>
 </body>
