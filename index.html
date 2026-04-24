@@ -485,6 +485,174 @@
             text-decoration: none;
         }
 
+        /* CV Modal */
+        .cv-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: var(--gradient-1);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        .cv-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalFadeIn 0.3s ease;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .modal-header {
+            padding: 24px 32px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: var(--bg-card);
+            z-index: 10;
+        }
+        .modal-header h2 {
+            font-size: 1.3rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .modal-close {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.2s;
+        }
+        .modal-close:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+        .modal-body {
+            padding: 32px;
+        }
+        .cv-section {
+            margin-bottom: 28px;
+        }
+        .cv-section:last-child {
+            margin-bottom: 0;
+        }
+        .cv-section h3 {
+            color: var(--accent);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+        .cv-section p, .cv-section li {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+        .cv-section ul {
+            padding-left: 20px;
+        }
+        .cv-section li {
+            margin-bottom: 6px;
+        }
+        .cv-job {
+            margin-bottom: 20px;
+            padding-left: 16px;
+            border-left: 2px solid var(--primary);
+        }
+        .cv-job h4 {
+            color: var(--text);
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        .cv-job .date {
+            color: var(--accent);
+            font-size: 0.75rem;
+            margin-bottom: 8px;
+        }
+        .cv-skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+        .cv-skill-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .cv-skill-item strong {
+            color: var(--text);
+            font-size: 0.8rem;
+        }
+        .cv-skill-item span {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+        .cv-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+        }
+        .cv-project-item {
+            padding: 14px;
+            background: rgba(6, 182, 212, 0.08);
+            border-radius: 10px;
+        }
+        .cv-project-item h4 {
+            color: var(--text);
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+        .cv-project-item p {
+            font-size: 0.8rem;
+        }
+
         /* SCROLL ANIMATIONS */
         .fade-in {
             opacity: 0;
@@ -956,149 +1124,140 @@
             <h2 class="section-title fade-in">Resume</h2>
             <p class="section-subtitle fade-in">My professional background and experience</p>
 
-            <!-- Download PDF Button -->
+            <!-- CV Button -->
             <div style="text-align: center; margin-bottom: 40px;" class="fade-in">
-                <a href="4-24-2026-resume.pdf" download style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; background: var(--gradient-1); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; hover: transform: translateY(-2px);">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                    Download PDF
-                </a>
+                <button class="cv-btn" onclick="openCvModal()">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                    View My CV
+                </button>
             </div>
 
-            <div style="max-width: 800px; margin: 0 auto;">
+            <!-- CV Modal -->
+            <div class="modal-overlay" id="cvModal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Zakia Imran Mangal — CV</h2>
+                        <button class="modal-close" onclick="closeCvModal()">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="cv-section">
+                            <h3>Professional Summary</h3>
+                            <p>Blockchain and Web3 developer with experience building decentralized applications, credential systems, and ATProto-based social apps. Skilled in React, TypeScript, Node.js, Python, and blockchain integration. Passionate about trust frameworks, credential verification, and decentralized identity.</p>
+                        </div>
 
-                <!-- Professional Summary -->
-                <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin-bottom: 24px;" class="fade-in">
-                    <h3 style="color: var(--accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Professional Summary</h3>
-                    <p style="color: var(--text-muted); line-height: 1.7;">
-                        Blockchain and Web3 developer with experience building decentralized applications, credential systems, and ATProto-based social apps. Skilled in React, TypeScript, Node.js, Python, and blockchain integration. Passionate about trust frameworks, credential verification, and decentralized identity.
-                    </p>
-                </div>
+                        <div class="cv-section">
+                            <h3>Technical Skills</h3>
+                            <div class="cv-skills-grid">
+                                <div class="cv-skill-item">
+                                    <strong>Languages</strong>
+                                    <span>JavaScript, TypeScript, Python, HTML/CSS</span>
+                                </div>
+                                <div class="cv-skill-item">
+                                    <strong>Frameworks</strong>
+                                    <span>React, Node.js, Express, Vite</span>
+                                </div>
+                                <div class="cv-skill-item">
+                                    <strong>Blockchain</strong>
+                                    <span>ATProto, DID/VC, LinkedClaims Protocol</span>
+                                </div>
+                                <div class="cv-skill-item">
+                                    <strong>Databases</strong>
+                                    <span>PostgreSQL, SQLite, pgvector</span>
+                                </div>
+                            </div>
+                        </div>
 
-                <!-- Technical Skills -->
-                <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin-bottom: 24px;" class="fade-in">
-                    <h3 style="color: var(--accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Technical Skills</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
-                        <div>
-                            <strong style="color: var(--text); font-size: 0.85rem;">Languages:</strong>
-                            <span style="color: var(--text-muted); font-size: 0.85rem;"> JavaScript, TypeScript, Python, HTML/CSS</span>
+                        <div class="cv-section">
+                            <h3>Work Experience</h3>
+                            <div class="cv-job">
+                                <h4>Developer — LinkedTrust.us</h4>
+                                <div class="date">2023 - Present</div>
+                                <ul>
+                                    <li>Built and maintained the LinkedTrust trust claim frontend (React/TypeScript)</li>
+                                    <li>Implemented ATProto integration for decentralized credential publishing</li>
+                                    <li>Developed claim ingestion pipelines connecting external data sources to LinkedClaims</li>
+                                    <li>Created the Alonovo-to-LinkedClaims data pipeline for product value verification</li>
+                                    <li>Worked on SimpleTip tipping system integration with LinkedClaims protocol</li>
+                                </ul>
+                            </div>
+                            <div class="cv-job">
+                                <h4>Coding Mentor</h4>
+                                <div class="date">Present</div>
+                                <p>Mentoring others in Web3/blockchain development</p>
+                            </div>
                         </div>
-                        <div>
-                            <strong style="color: var(--text); font-size: 0.85rem;">Frameworks:</strong>
-                            <span style="color: var(--text-muted); font-size: 0.85rem;"> React, Node.js, Express, Vite</span>
+
+                        <div class="cv-section">
+                            <h3>Key Projects at LinkedTrust</h3>
+                            <div class="cv-projects-grid">
+                                <div class="cv-project-item">
+                                    <h4>trust_claim Frontend</h4>
+                                    <p>Vite/React app, Ceramic network integration</p>
+                                </div>
+                                <div class="cv-project-item">
+                                    <h4>Alonovo Data Pipeline</h4>
+                                    <p>Claim ingestion pipeline for product data → LinkedClaims</p>
+                                </div>
+                                <div class="cv-project-item">
+                                    <h4>SimpleTip → LinkedClaims</h4>
+                                    <p>ATProto integration, tip records to com.linkedclaims.claim</p>
+                                </div>
+                                <div class="cv-project-item">
+                                    <h4>ATProto Claim Publishing</h4>
+                                    <p>Decentralized credential publishing system</p>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <strong style="color: var(--text); font-size: 0.85rem;">Blockchain:</strong>
-                            <span style="color: var(--text-muted); font-size: 0.85rem;"> ATProto, DID/VC standards, LinkedClaims</span>
+
+                        <div class="cv-section">
+                            <h3>Personal Projects</h3>
+                            <div class="cv-projects-grid">
+                                <div class="cv-project-item">
+                                    <h4>changemaker</h4>
+                                    <p>Content calendar & multi-platform social media tool</p>
+                                </div>
+                                <div class="cv-project-item">
+                                    <h4>simpletip</h4>
+                                    <p>One-click tipping for journalists & creators</p>
+                                </div>
+                                <div class="cv-project-item">
+                                    <h4>eaglewise-website</h4>
+                                    <p>Business consultancy website</p>
+                                </div>
+                                <div class="cv-project-item">
+                                    <h4>linked-resume</h4>
+                                    <p>Resume/credential verification app</p>
+                                </div>
+                                <div class="cv-project-item">
+                                    <h4>biryani-demo</h4>
+                                    <p>Food rescue web app with GoodDollar rewards</p>
+                                </div>
+                                <div class="cv-project-item">
+                                    <h4>atproto-app-builder</h4>
+                                    <p>Decentralized ATProto apps</p>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <strong style="color: var(--text); font-size: 0.85rem;">Databases:</strong>
-                            <span style="color: var(--text-muted); font-size: 0.85rem;"> PostgreSQL, SQLite, pgvector</span>
+
+                        <div class="cv-section">
+                            <h3>Education & Training</h3>
+                            <p>Active contributor to Whats-Cookin and Cooperation-org GitHub organizations. Part of the LinkedTrust ecosystem building decentralized trust infrastructure.</p>
+                        </div>
+
+                        <div class="cv-section">
+                            <h3>Contact</h3>
+                            <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-top: 8px;">
+                                <a href="mailto:zakiaimran513@gmail.com" style="color: var(--primary); text-decoration: none;">zakiaimran513@gmail.com</a>
+                                <span style="color: var(--text-muted);">•</span>
+                                <a href="https://github.com/Zakiamangal" target="_blank" style="color: var(--primary); text-decoration: none;">GitHub</a>
+                                <span style="color: var(--text-muted);">•</span>
+                                <a href="https://linkedin.com/in/zakia-imran" target="_blank" style="color: var(--primary); text-decoration: none;">LinkedIn</a>
+                                <span style="color: var(--text-muted);">•</span>
+                                <a href="https://linkedtrust.us" target="_blank" style="color: var(--primary); text-decoration: none;">LinkedTrust</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Work Experience -->
-                <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin-bottom: 24px;" class="fade-in">
-                    <h3 style="color: var(--accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 20px;">Work Experience</h3>
-
-                    <div style="margin-bottom: 24px; padding-left: 20px; border-left: 2px solid var(--primary);">
-                        <h4 style="color: var(--text); font-size: 1.1rem; margin-bottom: 4px;">Developer — LinkedTrust.us</h4>
-                        <span style="color: var(--accent); font-size: 0.8rem;">2023 - Present</span>
-                        <ul style="color: var(--text-muted); font-size: 0.9rem; margin-top: 12px; padding-left: 20px; line-height: 1.8;">
-                            <li>Built and maintained the LinkedTrust trust claim frontend (React/TypeScript)</li>
-                            <li>Implemented ATProto integration for decentralized credential publishing</li>
-                            <li>Developed claim ingestion pipelines connecting external data sources to LinkedClaims</li>
-                            <li>Created the Alonovo-to-LinkedClaims data pipeline for product value verification</li>
-                            <li>Worked on SimpleTip tipping system integration with LinkedClaims protocol</li>
-                        </ul>
-                    </div>
-
-                    <div style="padding-left: 20px; border-left: 2px solid var(--primary);">
-                        <h4 style="color: var(--text); font-size: 1.1rem; margin-bottom: 4px;">Coding Mentor</h4>
-                        <span style="color: var(--accent); font-size: 0.8rem;">Present</span>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Mentoring others in Web3/blockchain development</p>
-                    </div>
-                </div>
-
-                <!-- Key Projects -->
-                <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin-bottom: 24px;" class="fade-in">
-                    <h3 style="color: var(--accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 20px;">Key Projects at LinkedTrust</h3>
-
-                    <div style="display: grid; gap: 16px;">
-                        <div style="padding: 16px; background: rgba(99, 102, 241, 0.05); border-radius: 10px;">
-                            <h4 style="color: var(--text); font-size: 1rem; margin-bottom: 6px;">trust_claim Frontend</h4>
-                            <p style="color: var(--text-muted); font-size: 0.85rem;">Vite/React app — Primary developer, Ceramic network integration</p>
-                        </div>
-                        <div style="padding: 16px; background: rgba(99, 102, 241, 0.05); border-radius: 10px;">
-                            <h4 style="color: var(--text); font-size: 1rem; margin-bottom: 6px;">Alonovo Data Pipeline</h4>
-                            <p style="color: var(--text-muted); font-size: 0.85rem;">Claim ingestion pipeline for Alonovo product data → LinkedClaims</p>
-                        </div>
-                        <div style="padding: 16px; background: rgba(99, 102, 241, 0.05); border-radius: 10px;">
-                            <h4 style="color: var(--text); font-size: 1rem; margin-bottom: 6px;">SimpleTip → LinkedClaims</h4>
-                            <p style="color: var(--text-muted); font-size: 0.85rem;">ATProto integration, mapped tip records to com.linkedclaims.claim format</p>
-                        </div>
-                        <div style="padding: 16px; background: rgba(99, 102, 241, 0.05); border-radius: 10px;">
-                            <h4 style="color: var(--text); font-size: 1rem; margin-bottom: 6px;">ATProto Claim Publishing</h4>
-                            <p style="color: var(--text-muted); font-size: 0.85rem;">Decentralized credential publishing system</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Personal Projects -->
-                <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin-bottom: 24px;" class="fade-in">
-                    <h3 style="color: var(--accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 20px;">Personal Projects</h3>
-
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
-                        <div style="padding: 16px; background: rgba(6, 182, 212, 0.08); border-radius: 10px;">
-                            <h4 style="color: var(--text); font-size: 0.95rem; margin-bottom: 6px;">changemaker</h4>
-                            <p style="color: var(--text-muted); font-size: 0.8rem;">Content calendar & multi-platform social media management tool</p>
-                        </div>
-                        <div style="padding: 16px; background: rgba(6, 182, 212, 0.08); border-radius: 10px;">
-                            <h4 style="color: var(--text); font-size: 0.95rem; margin-bottom: 6px;">simpletip</h4>
-                            <p style="color: var(--text-muted); font-size: 0.8rem;">One-click embeddable tipping for journalists & content creators</p>
-                        </div>
-                        <div style="padding: 16px; background: rgba(6, 182, 212, 0.08); border-radius: 10px;">
-                            <h4 style="color: var(--text); font-size: 0.95rem; margin-bottom: 6px;">eaglewise-website</h4>
-                            <p style="color: var(--text-muted); font-size: 0.8rem;">Business consultancy website for UAE-based firm</p>
-                        </div>
-                        <div style="padding: 16px; background: rgba(6, 182, 212, 0.08); border-radius: 10px;">
-                            <h4 style="color: var(--text); font-size: 0.95rem; margin-bottom: 6px;">linked-resume</h4>
-                            <p style="color: var(--text-muted); font-size: 0.8rem;">Resume/credential verification application</p>
-                        </div>
-                        <div style="padding: 16px; background: rgba(6, 182, 212, 0.08); border-radius: 10px;">
-                            <h4 style="color: var(--text); font-size: 0.95rem; margin-bottom: 6px;">biryani-demo</h4>
-                            <p style="color: var(--text-muted); font-size: 0.8rem;">Food rescue activities web app with GoodDollar rewards</p>
-                        </div>
-                        <div style="padding: 16px; background: rgba(6, 182, 212, 0.08); border-radius: 10px;">
-                            <h4 style="color: var(--text); font-size: 0.95rem; margin-bottom: 6px;">atproto-app-builder</h4>
-                            <p style="color: var(--text-muted); font-size: 0.8rem;">Getting started with decentralized ATProto apps</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Education -->
-                <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin-bottom: 24px;" class="fade-in">
-                    <h3 style="color: var(--accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Education & Training</h3>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.7;">
-                        Active contributor to Whats-Cookin and Cooperation-org GitHub organizations.<br>
-                        Part of the LinkedTrust ecosystem building decentralized trust infrastructure.
-                    </p>
-                </div>
-
-                <!-- Contact Info -->
-                <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px;" class="fade-in">
-                    <h3 style="color: var(--accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Contact</h3>
-                    <div style="display: flex; flex-wrap: wrap; gap: 16px;">
-                        <a href="mailto:zakiaimran513@gmail.com" style="color: var(--primary); text-decoration: none; font-size: 0.9rem;">zakiaimran513@gmail.com</a>
-                        <span style="color: var(--text-muted);">|</span>
-                        <a href="https://github.com/Zakiamangal" target="_blank" style="color: var(--primary); text-decoration: none; font-size: 0.9rem;">GitHub</a>
-                        <span style="color: var(--text-muted);">|</span>
-                        <a href="https://linkedin.com/in/zakia-imran" target="_blank" style="color: var(--primary); text-decoration: none; font-size: 0.9rem;">LinkedIn</a>
-                        <span style="color: var(--text-muted);">|</span>
-                        <a href="https://linkedtrust.us" target="_blank" style="color: var(--primary); text-decoration: none; font-size: 0.9rem;">LinkedTrust</a>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
@@ -1170,6 +1329,19 @@
             navLinks.forEach(link => {
                 link.classList.toggle('active', link.getAttribute('href') === '#' + current);
             });
+        });
+
+        // CV Modal
+        function openCvModal() {
+            document.getElementById('cvModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeCvModal() {
+            document.getElementById('cvModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        document.getElementById('cvModal').addEventListener('click', function(e) {
+            if (e.target === this) closeCvModal();
         });
     </script>
 </body>
