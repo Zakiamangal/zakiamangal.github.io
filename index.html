@@ -272,6 +272,41 @@
             overflow: hidden;
         }
 
+        .card-link-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .card-link-overlay::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            cursor: pointer;
+        }
+
+        .project-card:hover .card-visit-hint {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .card-visit-hint {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all 0.2s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
         .project-card::before {
             content: '';
             position: absolute;
@@ -758,7 +793,10 @@
 
                 <!-- LinkedTrust -->
                 <div class="project-card fade-in">
+                    <a href="https://live.linkedtrust.us" target="_blank" class="card-link-overlay" aria-label="View LinkedTrust Platform"></a>
+                    <a href="https://live.linkedtrust.us" target="_blank" class="card-link-overlay" aria-label="View LinkedTrust Platform"></a>
                     <div class="project-header">
+                        <span class="card-visit-hint">Visit ↗</span>
                         <h3>LinkedTrust Platform</h3>
                         <span class="project-badge badge-flagship">Flagship</span>
                     </div>
@@ -779,7 +817,9 @@
 
                 <!-- LinkedClaims SDK -->
                 <div class="project-card fade-in">
+                    <a href="https://github.com/Cooperation-org/LinkedClaims" target="_blank" class="card-link-overlay" aria-label="View LinkedClaims SDK"></a>
                     <div class="project-header">
+                        <span class="card-visit-hint">Visit ↗</span>
                         <h3>LinkedClaims SDK</h3>
                         <span class="project-badge badge-flagship">Core</span>
                     </div>
@@ -797,7 +837,9 @@
 
                 <!-- Alonovo -->
                 <div class="project-card fade-in">
+                    <a href="https://github.com/Cooperation-org/alonovo" target="_blank" class="card-link-overlay" aria-label="View Alonovo"></a>
                     <div class="project-header">
+                        <span class="card-visit-hint">Visit ↗</span>
                         <h3>Alonovo</h3>
                         <span class="project-badge badge-ecosystem">Ethical Capital</span>
                     </div>
@@ -815,7 +857,9 @@
 
                 <!-- Changemaker Content Planner -->
                 <div class="project-card fade-in">
+                    <a href="https://github.com/Cooperation-org/changemaker" target="_blank" class="card-link-overlay" aria-label="View Changemaker Content Planner"></a>
                     <div class="project-header">
+                        <span class="card-visit-hint">Visit ↗</span>
                         <h3>Changemaker Content Planner</h3>
                         <span class="project-badge badge-client">Client</span>
                     </div>
@@ -835,7 +879,9 @@
 
                 <!-- GoodDollar -->
                 <div class="project-card fade-in">
+                    <a href="https://github.com" target="_blank" class="card-link-overlay" aria-label="View GoodDollar / GoodBuilders"></a>
                     <div class="project-header">
+                        <span class="card-visit-hint">Visit ↗</span>
                         <h3>GoodDollar / GoodBuilders</h3>
                         <span class="project-badge badge-social">Social Impact</span>
                     </div>
@@ -854,7 +900,9 @@
 
                 <!-- Certify -->
                 <div class="project-card fade-in">
+                    <a href="https://certify-platform.vercel.app" target="_blank" class="card-link-overlay" aria-label="View Certify"></a>
                     <div class="project-header">
+                        <span class="card-visit-hint">Visit ↗</span>
                         <h3>Certify</h3>
                         <span class="project-badge badge-ecosystem">Credentials</span>
                     </div>
@@ -873,7 +921,9 @@
 
                 <!-- Talent -->
                 <div class="project-card fade-in">
+                    <a href="https://github.com" target="_blank" class="card-link-overlay" aria-label="View Talent / LinkedCreds"></a>
                     <div class="project-header">
+                        <span class="card-visit-hint">Visit ↗</span>
                         <h3>Talent / LinkedCreds</h3>
                         <span class="project-badge badge-ecosystem">Verification</span>
                     </div>
@@ -891,7 +941,9 @@
 
                 <!-- SkillsAware -->
                 <div class="project-card fade-in">
+                    <a href="https://skillsaware-endorsement.vercel.app" target="_blank" class="card-link-overlay" aria-label="View SkillsAware"></a>
                     <div class="project-header">
+                        <span class="card-visit-hint">Visit ↗</span>
                         <h3>SkillsAware</h3>
                         <span class="project-badge badge-client">Client</span>
                     </div>
@@ -910,7 +962,9 @@
 
                 <!-- Claims Extractor -->
                 <div class="project-card fade-in">
+                    <a href="https://github.com/Whats-Cookin/trust-claim-data-pipeline" target="_blank" class="card-link-overlay" aria-label="View Linked Claims Extractor"></a>
                     <div class="project-header">
+                        <span class="card-visit-hint">Visit ↗</span>
                         <h3>Linked Claims Extractor</h3>
                         <span class="project-badge badge-ecosystem">AI</span>
                     </div>
@@ -928,7 +982,9 @@
 
                 <!-- CivicSky -->
                 <div class="project-card fade-in">
+                    <a href="https://github.com" target="_blank" class="card-link-overlay" aria-label="View CivicSky"></a>
                     <div class="project-header">
+                        <span class="card-visit-hint">Visit ↗</span>
                         <h3>CivicSky</h3>
                         <span class="project-badge badge-social">Civic</span>
                     </div>
@@ -946,7 +1002,9 @@
 
                 <!-- Data Pipeline -->
                 <div class="project-card fade-in">
+                    <a href="https://github.com" target="_blank" class="card-link-overlay" aria-label="View Trust Claim Data Pipeline"></a>
                     <div class="project-header">
+                        <span class="card-visit-hint">Visit ↗</span>
                         <h3>Trust Claim Data Pipeline</h3>
                         <span class="project-badge badge-flagship">Infrastructure</span>
                     </div>
@@ -964,7 +1022,9 @@
 
                 <!-- Streetwell -->
                 <div class="project-card fade-in">
+                    <a href="https://github.com" target="_blank" class="card-link-overlay" aria-label="View Streetwell"></a>
                     <div class="project-header">
+                        <span class="card-visit-hint">Visit ↗</span>
                         <h3>Streetwell</h3>
                         <span class="project-badge badge-client">Co-op Tech</span>
                     </div>
@@ -981,7 +1041,9 @@
 
                 <!-- Resume Search -->
                 <div class="project-card fade-in">
+                    <a href="https://github.com" target="_blank" class="card-link-overlay" aria-label="View Resume Search Engine"></a>
                     <div class="project-header">
+                        <span class="card-visit-hint">Visit ↗</span>
                         <h3>Resume Search Engine</h3>
                         <span class="project-badge badge-ecosystem">AI/NLP</span>
                     </div>
@@ -1000,7 +1062,9 @@
 
                 <!-- AZ Sunshine -->
                 <div class="project-card fade-in">
+                    <a href="https://github.com" target="_blank" class="card-link-overlay" aria-label="View AZ Sunshine"></a>
                     <div class="project-header">
+                        <span class="card-visit-hint">Visit ↗</span>
                         <h3>AZ Sunshine</h3>
                         <span class="project-badge badge-social">Transparency</span>
                     </div>
